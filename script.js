@@ -194,16 +194,6 @@ $('.nav__burger')?.addEventListener('click', () => {
   $('.nav__links').classList.toggle('is-open');
 });
 
-/* === HOW IT WORKS TABS === */
-$$('.how__tab').forEach((tab) => {
-  tab.addEventListener('click', () => {
-    $$('.how__tab').forEach(t => t.classList.remove('is-active'));
-    $$('.how__panel').forEach(p => p.classList.remove('is-active'));
-    tab.classList.add('is-active');
-    $(`.how__panel[data-panel="${tab.dataset.tab}"]`)?.classList.add('is-active');
-  });
-});
-
 /* === REGION SELECT === */
 $('#region')?.addEventListener('change', (e) => {
   const v = e.target.value;

@@ -3,14 +3,22 @@
 /* -----------------------------------------------------------
    👇 ОНОВИ СВОЇ КОНТАКТИ ТУТ
    ----------------------------------------------------------- */
+/* Email і телефон зберігаються рознесено — щоб прості боти-скрепери
+   не змогли витягти їх із вихідного коду одним regexp-ом.
+   Реальні значення збираються лише за подією кліку користувача. */
 const CONTACTS = {
-  email: 'bruhanda@gmail.com',
   telegram: '@tryandtake',
   telegramUrl: 'https://t.me/tryandtake',
-  phone: '+380965848050',
-  phoneDisplay: '+38 (096) 584-80-50',
-  facebook: 'https://www.facebook.com/',   // якщо є — встав свій URL
+  emailUser: 'bruhanda',
+  emailDomain: 'gmail.com',
+  phoneParts: ['+38', '096', '584', '80', '50'],
 };
+function getEmail() { return CONTACTS.emailUser + '@' + CONTACTS.emailDomain; }
+function getPhone() { return CONTACTS.phoneParts.join(''); }
+function getPhoneDisplay() {
+  const [c, a, p1, p2, p3] = CONTACTS.phoneParts;
+  return `${c} (${a}) ${p1}-${p2}-${p3}`;
+}
 
 /* -----------------------------------------------------------
    🔥 FIREBASE CONFIG — щоб коментарі стали реальними між людьми
@@ -344,26 +352,47 @@ function setupComments() {
   });
 }
 
-/* === CONTACTS — populate from config === */
-function applyContacts() {
-  document.querySelectorAll('.channel').forEach((a) => {
-    const txt = a.querySelector('strong')?.textContent.toLowerCase();
-    if (txt?.includes('email')) {
-      a.href = `mailto:${CONTACTS.email}?subject=ВУЛИК%20—%20відгук&body=Привіт!%20Хочу%20долучитись%2Fобговорити%20проєкт%20ВУЛИК.`;
-      a.querySelector('div span').innerHTML = CONTACTS.email;
-    }
-    if (txt?.includes('telegram')) {
-      a.href = CONTACTS.telegramUrl;
-      a.querySelector('div span').innerHTML = CONTACTS.telegram;
-    }
-    if (txt?.includes('телефон')) {
-      a.href = `tel:${CONTACTS.phone}`;
-      a.querySelector('div span').innerHTML = CONTACTS.phoneDisplay;
-    }
-    if (txt?.includes('facebook')) {
-      a.href = CONTACTS.facebook;
-    }
+/* === CONTACTS — click-to-reveal для email/телефону === */
+function setupRevealChannel(selector, displayGetter, valueGetter, hrefPrefix, actionLabel) {
+  document.querySelectorAll(selector).forEach((el) => {
+    let revealed = false;
+    const valueEl = el.querySelector('.channel__value');
+    const actionEl = el.querySelector('.channel__action');
+
+    const handle = () => {
+      if (!revealed) {
+        if (valueEl) valueEl.textContent = displayGetter();
+        if (actionEl) actionEl.textContent = actionLabel;
+        el.classList.add('channel--revealed');
+        revealed = true;
+      } else {
+        window.location.href = hrefPrefix + valueGetter();
+      }
+    };
+
+    el.addEventListener('click', handle);
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handle();
+      }
+    });
   });
+}
+
+function applyContacts() {
+  setupRevealChannel(
+    '[data-channel="email"]',
+    getEmail, getEmail,
+    'mailto:',
+    'натисни ще раз щоб написати →'
+  );
+  setupRevealChannel(
+    '[data-channel="phone"]',
+    getPhoneDisplay, getPhone,
+    'tel:',
+    'натисни ще раз щоб подзвонити →'
+  );
 }
 
 /* === WAITLIST FORM === */
@@ -407,7 +436,7 @@ $('#waitForm')?.addEventListener('submit', async (e) => {
 
 — Надіслано з лендингу`
   );
-  const mailto = `mailto:${CONTACTS.email}?subject=${encodeURIComponent('ВУЛИК — нова заявка з waitlist')}&body=${body}`;
+  const mailto = `mailto:${getEmail()}?subject=${encodeURIComponent('ВУЛИК — нова заявка з waitlist')}&body=${body}`;
 
   const status = $('#waitStatus');
   status.classList.remove('err');

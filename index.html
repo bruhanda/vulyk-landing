@@ -28,8 +28,8 @@
         <span class="logo__text">ВУЛИК</span>
       </a>
       <nav class="nav__links">
-        <a href="#problem">Проблема</a>
-        <a href="#how">Як це працює</a>
+        <a href="#about">Про проєкт</a>
+        <a href="#how">Як працює</a>
         <a href="#features">Можливості</a>
         <a href="#discuss">Обговорення</a>
         <a href="#contact" class="btn btn--ghost">Зв'язатись</a>
@@ -71,6 +71,74 @@
         <div class="hex hex--5">🤝</div>
         <div class="hex hex--6">🏷️</div>
         <div class="hex hex--center">ВУЛИК</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT — короткий пітч, що це і кому -->
+  <section id="about" class="section about">
+    <div class="container">
+      <h2 class="section__title">Якщо коротко</h2>
+      <p class="section__sub">Що цей проєкт вирішує — простими словами</p>
+
+      <div class="about__pitch">
+        <p class="about__pitch-main">
+          ВУЛИК — це додаток, де <strong>пасічник продає мед напряму людям</strong>,
+          а кожна банка має <strong>QR-код з історією пасіки</strong> замість довіри "на слово".
+        </p>
+        <p class="about__pitch-sub">
+          Плюс: журнал для роботи з пасікою, маркетплейс обладнання, карта медоносів для кочівлі,
+          кооперативи для оптових продажів і спільнота — все в одному застосунку, з регіональним фільтром.
+        </p>
+      </div>
+
+      <div class="compare">
+        <div class="compare__col compare__col--bad">
+          <h3>😩 Як зараз</h3>
+          <ul>
+            <li>Пасічник продає перекупнику за <b>130 грн/л</b> при вищій собівартості</li>
+            <li>Покупець купує "у дядька на ринку" і не знає, чи це справжній мед</li>
+            <li>14% меду в ЄС — фальсифікат, сироп під виглядом меду</li>
+            <li>Кочівля наосліп: дзвінки знайомим, конфлікти на полях</li>
+            <li>Б/У обладнання шукають через OLX з ризиком шахрайства</li>
+            <li>Журнал — в одному додатку, продаж — в іншому, спільнота — в третьому</li>
+          </ul>
+        </div>
+        <div class="compare__col compare__col--good">
+          <h3>😊 З ВУЛИКОМ</h3>
+          <ul>
+            <li>Пасічник продає напряму за <b>200–250 грн/л</b> через регіональний маркетплейс</li>
+            <li>Покупець сканує QR на банці — бачить фото, регіон, аналіз і відгуки</li>
+            <li>Цифровий паспорт меду гарантує справжність — більше жодного сиропу</li>
+            <li>Карта медоносів і бронювання полів з фермерами в один клік</li>
+            <li>Маркетплейс обладнання з ескроу-захистом і доставкою Новою Поштою</li>
+            <li>Журнал, продаж, спільнота, навчання — у одному застосунку</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="about__who">
+        <h3 class="about__who-title">Кому це врятує час і гроші</h3>
+        <div class="grid grid--3">
+          <div class="who-card">
+            <span class="who-card__icon">🐝</span>
+            <h4>Пасічнику</h4>
+            <p class="who-card__benefit">+30–50% до ціни меду</p>
+            <p>Продає напряму без перекупників. Має зручний журнал, карту кочівлі і канал для оптових продажів через кооператив.</p>
+          </div>
+          <div class="who-card">
+            <span class="who-card__icon">🛒</span>
+            <h4>Покупцю</h4>
+            <p class="who-card__benefit">Гарантія справжності</p>
+            <p>QR на банці = знає, чий мед, з якого регіону і з якими аналізами. Не платить більше за сироп під виглядом меду.</p>
+          </div>
+          <div class="who-card">
+            <span class="who-card__icon">🌾</span>
+            <h4>Фермеру</h4>
+            <p class="who-card__benefit">+20–30% урожаю</p>
+            <p>Пасічники самі знаходять його поля для запилення. Не треба дзвонити по знайомих чи шукати когось на бартер.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -318,35 +386,34 @@
           </p>
 
           <div id="contact" class="contact__channels">
-            <a href="mailto:bruhanda@gmail.com?subject=ВУЛИК%20—%20відгук&body=Привіт!%20Хочу%20долучитись%2Fобговорити%20проєкт%20ВУЛИК." class="channel">
-              <span class="channel__icon">📧</span>
-              <div>
-                <strong>Email</strong>
-                <span>bruhanda@gmail.com</span>
-              </div>
-            </a>
-            <a href="https://t.me/tryandtake" target="_blank" rel="noopener" class="channel">
+            <a href="https://t.me/tryandtake" target="_blank" rel="noopener" class="channel channel--visible" data-channel="telegram">
               <span class="channel__icon">✈️</span>
-              <div>
-                <strong>Telegram</strong>
-                <span>@tryandtake</span>
+              <div class="channel__body">
+                <strong>Telegram <span class="channel__badge">найшвидше</span></strong>
+                <span class="channel__value">@tryandtake</span>
               </div>
             </a>
-            <a href="tel:+380965848050" class="channel">
+            <div class="channel channel--hidden" data-channel="email" tabindex="0" role="button" aria-label="Email — натисни щоб показати">
+              <span class="channel__icon">📧</span>
+              <div class="channel__body">
+                <strong>Email</strong>
+                <span class="channel__value">●●●●●●●●@●●●●●.●●●</span>
+                <span class="channel__action">натисни щоб показати →</span>
+              </div>
+            </div>
+            <div class="channel channel--hidden" data-channel="phone" tabindex="0" role="button" aria-label="Телефон — натисни щоб показати">
               <span class="channel__icon">📞</span>
-              <div>
+              <div class="channel__body">
                 <strong>Телефон</strong>
-                <span>+38 (096) 584-80-50</span>
+                <span class="channel__value">+●● (●●●) ●●●-●●-●●</span>
+                <span class="channel__action">натисни щоб показати →</span>
               </div>
-            </a>
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener" class="channel">
-              <span class="channel__icon">📘</span>
-              <div>
-                <strong>Facebook</strong>
-                <span>посилання на профіль <em>(онови у script.js)</em></span>
-              </div>
-            </a>
+            </div>
           </div>
+          <p class="contact__note">
+            💡 <strong>Найкраще писати в Telegram</strong> — відповідаю швидко.
+            Email і телефон сховано від спам-ботів — натисни, щоб побачити.
+          </p>
         </div>
 
         <form id="waitForm" class="wait-form">

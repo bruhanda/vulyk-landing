@@ -588,9 +588,17 @@ a:hover { color: var(--honey); }
   100% { box-shadow: 0 0 0 0 rgba(76,175,80,0); }
 }
 
+.reactions-prompt {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin: 0 auto 18px;
+  max-width: 560px;
+}
 .reactions {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 48px;
@@ -599,9 +607,11 @@ a:hover { color: var(--honey); }
   background: var(--white);
   border: 2px solid var(--gray-300);
   border-radius: 999px;
-  padding: 12px 20px;
+  padding: 8px 14px 8px 12px;
   font-family: inherit;
-  font-size: 22px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray-700);
   cursor: pointer;
   transition: var(--transition);
   display: inline-flex;
@@ -610,18 +620,34 @@ a:hover { color: var(--honey); }
 }
 .reaction:hover {
   border-color: var(--honey);
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
 }
 .reaction.active {
   background: var(--honey-light);
   border-color: var(--honey);
+  color: var(--honey-dark);
 }
-.reaction b {
-  font-size: 14px;
-  color: var(--gray-700);
+.reaction__emoji {
+  font-size: 22px;
+  line-height: 1;
+}
+.reaction__label {
+  white-space: nowrap;
+}
+.reaction__count {
+  font-size: 12px;
   font-weight: 700;
-  min-width: 14px;
+  background: var(--gray-100);
+  padding: 2px 9px;
+  border-radius: 999px;
+  min-width: 24px;
   text-align: center;
+  color: var(--gray-700);
+}
+.reaction.active .reaction__count {
+  background: var(--honey);
+  color: var(--dark);
 }
 
 .comment-form {

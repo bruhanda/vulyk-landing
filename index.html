@@ -362,13 +362,38 @@
         <span class="live-status__count" id="commentCount"></span>
       </div>
 
+      <p class="reactions-prompt">👇 Як тобі ідея? Натисни одну або кілька реакцій нижче:</p>
       <div class="reactions" id="reactions">
-        <button class="reaction" data-emoji="🐝" title="Цікаво"><span>🐝</span><b>0</b></button>
-        <button class="reaction" data-emoji="🍯" title="Корисно"><span>🍯</span><b>0</b></button>
-        <button class="reaction" data-emoji="🔥" title="Геніально"><span>🔥</span><b>0</b></button>
-        <button class="reaction" data-emoji="🤔" title="Сумніваюсь"><span>🤔</span><b>0</b></button>
-        <button class="reaction" data-emoji="💸" title="Готовий платити"><span>💸</span><b>0</b></button>
-        <button class="reaction" data-emoji="🙅" title="Не зайде"><span>🙅</span><b>0</b></button>
+        <button class="reaction" data-emoji="🐝" title="Це цікаво">
+          <span class="reaction__emoji">🐝</span>
+          <span class="reaction__label">Цікаво</span>
+          <b class="reaction__count">0</b>
+        </button>
+        <button class="reaction" data-emoji="🍯" title="Це буде корисно">
+          <span class="reaction__emoji">🍯</span>
+          <span class="reaction__label">Корисно</span>
+          <b class="reaction__count">0</b>
+        </button>
+        <button class="reaction" data-emoji="🔥" title="Геніальна ідея">
+          <span class="reaction__emoji">🔥</span>
+          <span class="reaction__label">Геніально</span>
+          <b class="reaction__count">0</b>
+        </button>
+        <button class="reaction" data-emoji="🤔" title="Сумніваюсь, що спрацює">
+          <span class="reaction__emoji">🤔</span>
+          <span class="reaction__label">Сумніваюсь</span>
+          <b class="reaction__count">0</b>
+        </button>
+        <button class="reaction" data-emoji="💸" title="Готовий за це платити">
+          <span class="reaction__emoji">💸</span>
+          <span class="reaction__label">Куплю</span>
+          <b class="reaction__count">0</b>
+        </button>
+        <button class="reaction" data-emoji="🙅" title="Мені це не зайде">
+          <span class="reaction__emoji">🙅</span>
+          <span class="reaction__label">Не моє</span>
+          <b class="reaction__count">0</b>
+        </button>
       </div>
 
       <form id="commentForm" class="comment-form">

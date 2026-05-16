@@ -209,7 +209,8 @@ function renderReactions() {
   const mine = loadLS(LS_MY_REACTIONS, []);
   $$('.reaction').forEach((btn) => {
     const emoji = btn.dataset.emoji;
-    btn.querySelector('b').textContent = currentReactions[emoji] ?? 0;
+    const countEl = btn.querySelector('.reaction__count') || btn.querySelector('b');
+    if (countEl) countEl.textContent = currentReactions[emoji] ?? 0;
     btn.classList.toggle('active', mine.includes(emoji));
   });
 }

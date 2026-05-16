@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ВУЛИК — єдиний застосунок для пасічників і поціновувачів меду. Журнал пасіки, прямий маркетплейс, QR-паспорт меду, спільнота." />
+  <meta property="og:title" content="ВУЛИК — від вулика до серця" />
+  <meta property="og:description" content="Єдина платформа для пасічників і покупців меду. Без перекупників, з довірою, у твоєму регіоні." />
+  <meta property="og:type" content="website" />
+  <title>ВУЛИК — від вулика до серця</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%9D%3C/text%3E%3C/svg%3E" />
+
+  <!-- Firebase (real-time comments). Якщо config у script.js не заповнений — буде працювати локально. -->
+  <script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="#" class="logo">
+        <span class="logo__bee">🐝</span>
+        <span class="logo__text">ВУЛИК</span>
+      </a>
+      <nav class="nav__links">
+        <a href="#problem">Проблема</a>
+        <a href="#how">Як це працює</a>
+        <a href="#features">Можливості</a>
+        <a href="#discuss">Обговорення</a>
+        <a href="#contact" class="btn btn--ghost">Зв'язатись</a>
+      </nav>
+      <button class="nav__burger" aria-label="меню">☰</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <span class="badge">🚀 Шукаємо перших 100 пасічників-бета-тестерів</span>
+        <h1>
+          Один застосунок,<br />
+          де <span class="accent">пасіка</span> зустрічається<br />
+          з <span class="accent">людиною</span>
+        </h1>
+        <p class="lead">
+          ВУЛИК — це журнал пасіки, прямий маркетплейс меду й обладнання,
+          QR-паспорт кожної банки та спільнота пасічників і покупців у твоєму регіоні.
+          Без перекупників. З довірою.
+        </p>
+        <div class="hero__cta">
+          <a href="#waitlist" class="btn btn--primary">Долучитись до waitlist</a>
+          <a href="#how" class="btn btn--ghost">Як це працює →</a>
+        </div>
+        <div class="hero__stats">
+          <div><strong>400k+</strong><span>пасічників в Україні</span></div>
+          <div><strong>14%</strong><span>меду в ЄС — фальсифікат</span></div>
+          <div><strong>3-й</strong><span>найбільш підроблюваний продукт</span></div>
+        </div>
+      </div>
+      <div class="hero__visual" aria-hidden="true">
+        <div class="hex hex--1">🍯</div>
+        <div class="hex hex--2">🐝</div>
+        <div class="hex hex--3">📱</div>
+        <div class="hex hex--4">🗺️</div>
+        <div class="hex hex--5">🤝</div>
+        <div class="hex hex--6">🏷️</div>
+        <div class="hex hex--center">ВУЛИК</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section id="problem" class="section problem">
+    <div class="container">
+      <h2 class="section__title">Що болить ринку зараз</h2>
+      <p class="section__sub">Реальні скарги з форумів і опитувань пасічників та покупців</p>
+      <div class="grid grid--3">
+        <div class="card card--problem">
+          <span class="card__icon">💸</span>
+          <h3>Перекупники диктують ціну</h3>
+          <p>Закупка 120–140 грн/л при собівартості вищій. Пасічник втрачає 30–50% маржі, бо не має прямого виходу на покупця.</p>
+        </div>
+        <div class="card card--problem">
+          <span class="card__icon">🤔</span>
+          <h3>Покупець не довіряє</h3>
+          <p>Мед — третій найбільш фальсифікований продукт у світі. Покупець не знає, хто й де його зробив. Обирає супермаркет.</p>
+        </div>
+        <div class="card card--problem">
+          <span class="card__icon">🧩</span>
+          <h3>Все розкидано</h3>
+          <p>Журнал пасіки — в одному застосунку. Продаж — на OLX. Обладнання — у фейсбук-групі. Кочівля — в чаті. 75% кидають перший застосунок.</p>
+        </div>
+        <div class="card card--problem">
+          <span class="card__icon">🗺️</span>
+          <h3>Кочівля наосліп</h3>
+          <p>Де цвіте акація? Хто вже стоїть на полі? Як домовитись із фермером? Все через знайомих і телефонні дзвінки.</p>
+        </div>
+        <div class="card card--problem">
+          <span class="card__icon">🛠️</span>
+          <h3>Б/У обладнання — лотерея</h3>
+          <p>Медогонки, вулики, рамки продають через OLX без верифікації. Фото є, рамки — ні. Шахрайство.</p>
+        </div>
+        <div class="card card--problem">
+          <span class="card__icon">👴</span>
+          <h3>Новачкам нікуди йти</h3>
+          <p>Молодий пасічник без наставника втрачає 50% сім'ї на першу зимівлю. Хаотичні чати — не школа.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="section how">
+    <div class="container">
+      <h2 class="section__title">Як це працює</h2>
+      <p class="section__sub">Три ролі — одна екосистема</p>
+
+      <div class="how__tabs">
+        <button class="how__tab is-active" data-tab="beekeeper">👨‍🌾 Пасічник Василь</button>
+        <button class="how__tab" data-tab="buyer">👩 Покупець Оля</button>
+        <button class="how__tab" data-tab="farmer">🌾 Фермер Петро</button>
+      </div>
+
+      <div class="how__panels">
+        <div class="how__panel is-active" data-panel="beekeeper">
+          <ol class="steps">
+            <li><strong>Зима.</strong> Веде журнал 30 вуликів у телефоні. Замовляє рамки через маркетплейс — гроші в ескроу до доставки.</li>
+            <li><strong>Весна.</strong> Огляд диктує голосом — застосунок розкладає у структурований запис.</li>
+            <li><strong>Травень.</strong> Карта медоносів показує, де через 5 днів зацвіте акація. Бронює точку кочівлі, домовляється з фермером у чаті.</li>
+            <li><strong>Липень.</strong> Відкачав 800 кг липи → 800 QR-кодів на банки одним натисканням.</li>
+            <li><strong>Серпень.</strong> Продає в роздріб через маркетплейс (250 грн/кг) і паралельно через кооператив "Полтавщина-Липа" (200 грн/кг замість 140).</li>
+            <li><strong>Осінь.</strong> Звітність для ветеринарної служби — кнопка "Експорт".</li>
+          </ol>
+        </div>
+
+        <div class="how__panel" data-panel="buyer">
+          <ol class="steps">
+            <li><strong>Сканує QR на банці</strong> у магазині → бачить фото пасічника, регіон, лаб-аналіз, відгуки.</li>
+            <li><strong>Підписується</strong> на Honey Box — щомісяця нова банка від різного пасічника її області.</li>
+            <li><strong>Замовляє подарунок</strong> "Усинови вулик" татові на день народження. Тато щомісяця отримує фото "свого" вулика і мед восени.</li>
+            <li><strong>Бачить на карті</strong> ще 12 пасік поруч. Купує безпосередньо. Знає, що це не сироп.</li>
+          </ol>
+        </div>
+
+        <div class="how__panel" data-panel="farmer">
+          <ol class="steps">
+            <li><strong>Виставляє поле:</strong> "Соняшник 200 га, цвітіння 15 липня, місце для 50 вуликів."</li>
+            <li><strong>Пасічники бронюють</strong> місця через платформу.</li>
+            <li><strong>Урожай +20–30%</strong> від запилення. Пасічники збирають мед. Win-win.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="section features">
+    <div class="container">
+      <h2 class="section__title">Що буде всередині</h2>
+      <p class="section__sub">MVP → Фаза 2 → Фаза 3</p>
+      <div class="grid grid--3">
+        <div class="card">
+          <span class="card__icon">📔</span>
+          <h3>Журнал пасіки</h3>
+          <p>Картка вулика, голосовий ввід, офлайн-режим, нагадування, експорт для ветеринарки.</p>
+        </div>
+        <div class="card">
+          <span class="card__icon">🛒</span>
+          <h3>Маркетплейс</h3>
+          <p>Мед, обладнання, бджолопакети, матки. Геофільтр, ескроу, інтеграція з Новою Поштою.</p>
+        </div>
+        <div class="card">
+          <span class="card__icon">🏷️</span>
+          <h3>QR-паспорт меду</h3>
+          <p>Кожна банка → сторінка з фото пасічника, координатами, аналізом, відгуками.</p>
+        </div>
+        <div class="card">
+          <span class="card__icon">🗺️</span>
+          <h3>Карта медоносів і пасік</h3>
+          <p>Шари цвітіння, попередження про обробку полів, координація кочівлі.</p>
+        </div>
+        <div class="card">
+          <span class="card__icon">🤝</span>
+          <h3>Кооперативи</h3>
+          <p>Спільні лоти, оптові продажі, документообіг. Реально вдвічі вища ціна.</p>
+        </div>
+        <div class="card">
+          <span class="card__icon">🎁</span>
+          <h3>"Усинови вулик"</h3>
+          <p>Корпоративні та особисті подарунки. Фото-звіти щомісяця, мед восени.</p>
+        </div>
+        <div class="card">
+          <span class="card__icon">📦</span>
+          <h3>Honey Box</h3>
+          <p>Підписка $15–30/міс. Свіжий мед від різного пасічника у твоєму регіоні щомісяця.</p>
+        </div>
+        <div class="card">
+          <span class="card__icon">💬</span>
+          <h3>Спільнота</h3>
+          <p>Регіональні форуми, Q&A, наставництво, stories з пасік.</p>
+        </div>
+        <div class="card">
+          <span class="card__icon">🎓</span>
+          <h3>Академія</h3>
+          <p>Курси від топ-пасічників, сертифікація, бейджі.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGIONS -->
+  <section class="section regions">
+    <div class="container">
+      <h2 class="section__title">Працює для будь-якого регіону</h2>
+      <p class="section__sub">Старт — Україна. Далі — Польща, Молдова, Туреччина, Грузія, ЄС.</p>
+      <div class="regions__select">
+        <label for="region">Обери свій регіон:</label>
+        <select id="region">
+          <option value="">— область / регіон —</option>
+          <optgroup label="🇺🇦 Україна">
+            <option>Вінницька</option>
+            <option>Волинська</option>
+            <option>Дніпропетровська</option>
+            <option>Донецька</option>
+            <option>Житомирська</option>
+            <option>Закарпатська</option>
+            <option>Запорізька</option>
+            <option>Івано-Франківська</option>
+            <option>Київська</option>
+            <option>Кіровоградська</option>
+            <option>Луганська</option>
+            <option>Львівська</option>
+            <option>Миколаївська</option>
+            <option>Одеська</option>
+            <option>Полтавська</option>
+            <option>Рівненська</option>
+            <option>Сумська</option>
+            <option>Тернопільська</option>
+            <option>Харківська</option>
+            <option>Херсонська</option>
+            <option>Хмельницька</option>
+            <option>Черкаська</option>
+            <option>Чернівецька</option>
+            <option>Чернігівська</option>
+          </optgroup>
+          <optgroup label="🌍 Інші країни (фаза 2–3)">
+            <option>🇵🇱 Польща</option>
+            <option>🇲🇩 Молдова</option>
+            <option>🇷🇴 Румунія</option>
+            <option>🇹🇷 Туреччина</option>
+            <option>🇬🇪 Грузія</option>
+          </optgroup>
+        </select>
+        <p id="regionFeedback" class="region__feedback"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCUSSION -->
+  <section id="discuss" class="section discuss">
+    <div class="container">
+      <h2 class="section__title">Що думаєте?</h2>
+      <p class="section__sub">Залиш реакцію та коментар — це і є тест ідеї. Дискусія живе тут, реально, для всіх відвідувачів.</p>
+
+      <div id="liveStatus" class="live-status">
+        <span class="live-status__dot"></span>
+        <span class="live-status__text">Перевірка зʼєднання…</span>
+        <span class="live-status__count" id="commentCount"></span>
+      </div>
+
+      <div class="reactions" id="reactions">
+        <button class="reaction" data-emoji="🐝" title="Цікаво"><span>🐝</span><b>0</b></button>
+        <button class="reaction" data-emoji="🍯" title="Корисно"><span>🍯</span><b>0</b></button>
+        <button class="reaction" data-emoji="🔥" title="Геніально"><span>🔥</span><b>0</b></button>
+        <button class="reaction" data-emoji="🤔" title="Сумніваюсь"><span>🤔</span><b>0</b></button>
+        <button class="reaction" data-emoji="💸" title="Готовий платити"><span>💸</span><b>0</b></button>
+        <button class="reaction" data-emoji="🙅" title="Не зайде"><span>🙅</span><b>0</b></button>
+      </div>
+
+      <form id="commentForm" class="comment-form">
+        <div class="comment-form__row">
+          <input type="text" id="cName" placeholder="Твоє ім'я (наприклад: Василь, пасічник, Полтавщина)" required maxlength="80" />
+          <select id="cRole">
+            <option value="🐝 пасічник">🐝 пасічник</option>
+            <option value="🛒 покупець">🛒 покупець</option>
+            <option value="🌾 фермер">🌾 фермер</option>
+            <option value="🛠️ виробник обладнання">🛠️ виробник обладнання</option>
+            <option value="💼 інвестор / партнер">💼 інвестор / партнер</option>
+            <option value="🤓 просто цікаво">🤓 просто цікаво</option>
+          </select>
+        </div>
+        <textarea id="cText" placeholder="Що думаєш про ідею? Що додав би, а що зайве? Які болі в тебе насправді?" required maxlength="1000"></textarea>
+        <div class="comment-form__bottom">
+          <span class="hint">Це демо — справжні відгуки шли через <a href="#contact">контакти нижче</a>.</span>
+          <button type="submit" class="btn btn--primary">Залишити коментар</button>
+        </div>
+      </form>
+
+      <div id="comments" class="comments"></div>
+    </div>
+  </section>
+
+  <!-- WAITLIST + CONTACT -->
+  <section id="waitlist" class="section contact">
+    <div class="container">
+      <div class="contact__grid">
+        <div>
+          <h2>Хочеш бути першим?</h2>
+          <p class="lead">
+            Ми шукаємо 100 пасічників і 500 покупців у Україні для безкоштовного бета-тесту восени.
+            Якщо хочеш долучитись, маєш ідеї, питання, чи готовий проінвестувати — напиши.
+          </p>
+
+          <div id="contact" class="contact__channels">
+            <a href="mailto:bruhanda@gmail.com?subject=ВУЛИК%20—%20відгук&body=Привіт!%20Хочу%20долучитись%2Fобговорити%20проєкт%20ВУЛИК." class="channel">
+              <span class="channel__icon">📧</span>
+              <div>
+                <strong>Email</strong>
+                <span>bruhanda@gmail.com</span>
+              </div>
+            </a>
+            <a href="https://t.me/tryandtake" target="_blank" rel="noopener" class="channel">
+              <span class="channel__icon">✈️</span>
+              <div>
+                <strong>Telegram</strong>
+                <span>@tryandtake</span>
+              </div>
+            </a>
+            <a href="tel:+380965848050" class="channel">
+              <span class="channel__icon">📞</span>
+              <div>
+                <strong>Телефон</strong>
+                <span>+38 (096) 584-80-50</span>
+              </div>
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" class="channel">
+              <span class="channel__icon">📘</span>
+              <div>
+                <strong>Facebook</strong>
+                <span>посилання на профіль <em>(онови у script.js)</em></span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <form id="waitForm" class="wait-form">
+          <h3>📝 Швидка форма</h3>
+          <label>
+            Як до тебе звертатись?
+            <input type="text" id="wName" required placeholder="Імʼя" />
+          </label>
+          <label>
+            Контакт (email або Telegram)
+            <input type="text" id="wContact" required placeholder="email@... або @username" />
+          </label>
+          <label>
+            Хто ти?
+            <select id="wRole">
+              <option>🐝 пасічник</option>
+              <option>🛒 покупець меду</option>
+              <option>🌾 фермер / аграрій</option>
+              <option>🛠️ виробник обладнання</option>
+              <option>💼 інвестор / партнер</option>
+              <option>🤓 цікаво подивитись</option>
+            </select>
+          </label>
+          <label>
+            Регіон
+            <input type="text" id="wRegion" placeholder="напр. Полтавська обл." />
+          </label>
+          <label>
+            Що тобі найважливіше? (необовʼязково)
+            <textarea id="wMessage" rows="3" placeholder="Опиши свій найголовніший біль або очікування"></textarea>
+          </label>
+          <button type="submit" class="btn btn--primary">Надіслати</button>
+          <p id="waitStatus" class="wait-form__status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <span class="logo"><span class="logo__bee">🐝</span> <span class="logo__text">ВУЛИК</span></span>
+        <p>Від вулика до серця.</p>
+      </div>
+      <div class="footer__share">
+        <span>Поділись:</span>
+        <a href="https://t.me/share/url?url=https%3A%2F%2Fvulyk.app&text=Дивись%2C%20яку%20штуку%20роблять%20для%20пасічників%20—%20ВУЛИК" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fvulyk.app" target="_blank" rel="noopener">Facebook</a>
+        <a href="viber://forward?text=Дивись%2C%20яку%20штуку%20роблять%20для%20пасічників%20—%20ВУЛИК" target="_blank" rel="noopener">Viber</a>
+      </div>
+      <small>© <span id="year"></span> ВУЛИК — концепт у розробці. Прототип лендингу.</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
